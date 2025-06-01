@@ -28,3 +28,19 @@ jobs:
 
     - name: Run tests with coverage
       run: dotnet test ProductReview.Api.Tests/ProductReview.Api.Tests.csproj --collect:"XPlat Code Coverage"
+
+    - name: Install ReportGenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+    - name: Generate HTML coverage report
+      run: |
+        reportgenerator \
+          -reports:ProductReview.Api.Tests/TestResults/**/coverage.cobertura.xml \
+          -targetdir:coverage-report-html \
+          -reporttypes:Html
+
+    - name: Upload HTML coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: html-coverage-report
+        path: coverage-report-html
