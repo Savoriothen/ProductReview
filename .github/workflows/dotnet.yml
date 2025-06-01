@@ -26,5 +26,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
 
-    - name: Run tests
-      run: dotnet test ProductReview.Api.Tests/ProductReview.Api.Tests.csproj
+    - name: Run tests with coverage
+      run: dotnet test ProductReview.Api.Tests/ProductReview.Api.Tests.csproj --collect:"XPlat Code Coverage"
