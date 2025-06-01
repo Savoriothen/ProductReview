@@ -27,4 +27,4 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Run tests
-      dotnet test ProductReview.Api.Tests/ProductReview.Api.Tests.csproj
+      run: dotnet test ProductReview.Api.Tests/ProductReview.Api.Tests.csproj
